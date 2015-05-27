@@ -1,0 +1,41 @@
+﻿<div class="col-lg-4 form-container">
+    <label>Username</label>
+    <input class="form-control" id="login-username" type="text" />
+    <label>Password</label>
+    <input class="form-control" id="login-password" type="password" />
+    <input type="button" value="Login" class="btn-lg" onclick="tryLogin();" />
+    <label id="LoginErrorMessage"></label>
+</div>
+<div class="col-lg-4 form-container" id="register-form">
+    <div>
+        <form action="http://softuni-social-network.azurewebsites.net/api/users/Register" method="post" id="registerForm">
+            <div class="row">
+                <label>Username</label>
+                <input class="form-control" type="text" name="Username" />
+            </div>
+            <div class="row">
+                <label>Password</label>
+                <input class="form-control" type="password" name="Password" />
+            </div>
+            <div class="row">
+                <label>Confirm password</label>
+                <input class="form-control" type="password" name="ConfirmPassword" />
+            </div>
+            <div class="row">
+                <label>Name</label>
+                <input class="form-control" type="text" name="Name" />
+            </div>
+            <div class="row">
+                <label>Email</label>
+                <input class="form-control" type="email" name="Email" />
+            </div>
+            <div class="row">
+                <label>Gender:</label>
+                <input type="radio" name="Gender" value="1">Male
+                <input type="radio" name="Gender" value="2">Female
+                <input type="radio" name="Gender" value="0">Other
+            </div>
+            <input type="submit" value="Register" class="btn-lg" />
+        </form>
+    </div>
+</div>

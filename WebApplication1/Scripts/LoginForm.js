@@ -7,6 +7,8 @@ function tryLogin() {
             document.cookie = "access_token=" + data.access_token;
             //console.log(document.cookie);
         }
+    }).fail(function () {
+        $("#LoginErrorMessage").text("Wrong username or password!");
     });
 }
 

@@ -4,3 +4,9 @@ F:\Projects\WebApplication1\WebApplication1\bin\WebApplication1.pdb
 F:\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 F:\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 F:\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+F:\Projects\SPASocialNetwork\WebApplication1\bin\WebApplication1.dll.config
+F:\Projects\SPASocialNetwork\WebApplication1\bin\WebApplication1.dll
+F:\Projects\SPASocialNetwork\WebApplication1\bin\WebApplication1.pdb
+F:\Projects\SPASocialNetwork\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+F:\Projects\SPASocialNetwork\WebApplication1\obj\Debug\WebApplication1.dll
+F:\Projects\SPASocialNetwork\WebApplication1\obj\Debug\WebApplication1.pdb

@@ -66,6 +66,7 @@
     <Content Include="Components\bootstrap-3.3.4-dist\js\bootstrap.min.js" />
     <Content Include="Components\bootstrap-3.3.4-dist\js\npm.js" />
     <Content Include="Index.html" />
+    <Content Include="Partials\LoginAndRegister.html" />
     <Content Include="Scripts\AjaxForm.js" />
     <Content Include="Scripts\AngularController.js" />
     <Content Include="Scripts\Globals.js" />
