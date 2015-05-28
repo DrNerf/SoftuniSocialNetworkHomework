@@ -1,0 +1,21 @@
+﻿h1{
+    border:2px solid #333;
+    padding:2.9%;
+}
+
+h3 a{
+    color:#333;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+h3 i{
+    border:2px solid #333;
+    padding:0.9%;
+    cursor:pointer;
+}
+
+h3 i:hover{
+    border:2px solid #337ab7;
+    color:#337ab7;
+}

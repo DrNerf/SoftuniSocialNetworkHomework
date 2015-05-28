@@ -1,4 +1,4 @@
-backEndURL = "http://softuni-social-network.azurewebsites.net";
+backEndURL = "http://softuni-social-network.azurewebsites.net/api";
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -9,4 +9,8 @@ function getCookie(cname) {
         if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
     }
     return "";
+}
+
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
