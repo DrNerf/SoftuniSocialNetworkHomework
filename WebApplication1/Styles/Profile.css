@@ -19,3 +19,59 @@ h3 i:hover{
     border:2px solid #337ab7;
     color:#337ab7;
 }
+
+#searchField{
+    border:2px solid black;
+    border-radius:5px !important;
+}
+
+#searchBtn{
+    border:0px;
+    margin-left:-40px;
+    z-index:999;
+}
+
+#searchBtn:hover{
+    background-color:white;
+}
+
+#searchBtn:active{
+    background-color:white;
+    border:0px;
+}
+
+#searchResultsContainer{
+    border: 2px solid black;
+    position:absolute;
+    background-color:white;
+    padding:2.9%;
+    z-index:999;
+    width:74%;
+}
+
+#searchInputGroup{
+    width:80%;
+}
+
+#searchTotal{
+    font-size:12px;
+    text-decoration:underline;
+    text-align:center;
+}
+
+#searchResultsContainer strong{
+    font-size:16px;
+    cursor:pointer;
+}
+
+#searchResultsContainer strong:hover {
+    color: #337ab7;
+}
+
+#closeSearchResults{
+    border:0px;
+    margin:0px;
+    position:absolute;
+    top:0px;
+    right:0px;
+}

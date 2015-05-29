@@ -8,7 +8,41 @@
 <body>
     <div class="container">
         <div class="row" ng-app="socialNetworkApp" ng-controller="SocialNetworkController">
-            <ng-view></ng-view>
+            <div class="row" ng-show="isLogedIn">
+                <h3>
+                    <div class="col-lg-6">
+                        <a href="/#/">{{fullName}}</a>
+                        <i class="glyphicon glyphicon-comment"></i>
+                        <i class="glyphicon glyphicon-user"></i>
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <i class="glyphicon glyphicon-lock"></i>
+                        <i class="glyphicon glyphicon-log-out" ng-click="logout()"></i>
+                    </div>
+
+                    <div class="col-lg-4 pull-right">
+                        <span class="input-group" id="searchInputGroup">
+                            <input id="searchField" type="text" class="form-control" ng-model="searchTerm" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" id="searchBtn" ng-click="search(searchTerm)">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </span>
+                        <!-- search results -->
+                        <div class="" id="searchResultsContainer" ng-show="searchResults.length > 0">
+                            <i class="glyphicon glyphicon-remove-circle" id="closeSearchResults" ng-click="searchResults.length = 0"></i>
+                            <div ng-repeat="result in searchResults">
+                                <strong ng-click="user(result.username)">{{result.name}}</strong>
+                                <hr />
+                            </div>
+                            <div id="searchTotal">{{searchResults.length}} results total</div>
+                        </div>
+                    </div>
+                </h3>
+            </div>
+            <div class="row">
+                <ng-view></ng-view>
+            </div>
         </div>
     </div>
 

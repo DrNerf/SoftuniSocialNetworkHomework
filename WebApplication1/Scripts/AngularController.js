@@ -3,6 +3,7 @@ var socialNetwork = angular.module("socialNetworkApp", ["ngRoute"]);
 socialNetwork.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", { templateUrl: "/Partials/LoginAndRegister.html" })
+        .when("/viewProfile", { templateUrl: "/Partials/ViewProfile.html" })
 });
 
 socialNetwork.controller("SocialNetworkController", function($scope) {
@@ -55,6 +56,34 @@ socialNetwork.controller("SocialNetworkController", function($scope) {
         });
     }
 
+    $scope.search = function (terms) {
+        $.ajax({
+            url: backEndURL + "/users/search?searchTerm=" + terms,
+            type: "GET",
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+                $scope.searchResults = data;
+                $scope.$apply();
+            }
+        });
+    }
+
+    $scope.user = function (username) {
+        $scope.searchResults.length = 0;
+        $.ajax({
+            url: backEndURL + "/users/" + username,
+            type: "GET",
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+                $scope.profileViewed = data;
+                $scope.$apply();
+                window.location.href = "/#/viewProfile";
+            }
+        });
+    }
+
     function getPersonalData() {
         $.ajax({
             url: backEndURL + "/me",
@@ -93,5 +122,15 @@ socialNetwork.controller("SocialNetworkController", function($scope) {
                 console.log(data);
             }
         });
+    }
+
+    $scope.parseGender = function(number) {
+        if (number == 1) {
+            return "Male";
+        }
+        if (number == 2) {
+            return "Female";
+        }
+        return "Other";
     }
 });
