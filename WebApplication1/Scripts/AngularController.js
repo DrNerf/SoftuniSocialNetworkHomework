@@ -28,21 +28,6 @@ socialNetwork.controller("SocialNetworkController", function($scope) {
         getFriends();
     }
 
-    $('#registerForm')
-    .ajaxForm({
-        url: 'http://softuni-social-network.azurewebsites.net/api/users/Register',
-        dataType: 'json',
-        //method: 'post',
-        success: function (data) {
-            //console.log(new Date(data.expires_in));
-            document.cookie = "access_token=" + data.access_token;
-            //console.log(document.cookie);
-            $scope.isLogedIn = true;
-            initProfile();
-            $scope.$apply();
-        }
-    });
-
     $scope.tryLogin = function() {
         var username = $("#login-username").val();
         var password = $("#login-password").val();

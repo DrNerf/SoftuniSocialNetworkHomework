@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{C5C5051A-CA9A-4CC2-9B7E-389F67D55350}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SofuniSocialNetwork", "WebApplication1\SofuniSocialNetwork.csproj", "{C5C5051A-CA9A-4CC2-9B7E-389F67D55350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
