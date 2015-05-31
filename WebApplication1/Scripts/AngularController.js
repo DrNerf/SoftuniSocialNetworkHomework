@@ -4,6 +4,9 @@ socialNetwork.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", { templateUrl: "/Partials/LoginAndRegister.html" })
         .when("/viewProfile", { templateUrl: "/Partials/ViewProfile.html" })
+        .when("/editProfile", { templateUrl: "/Partials/EditProfile.html" })
+        .when("/changePassword", { templateUrl: "/Partials/ChangePassword.html" })
+        .when("/createPost", { templateUrl: "/Partials/CreatePost.html" })
 });
 
 socialNetwork.controller("SocialNetworkController", function($scope) {
@@ -21,7 +24,24 @@ socialNetwork.controller("SocialNetworkController", function($scope) {
         getPersonalData();
         //createNewPost();
         getNewsFeed();
+        getFriendRequests();
+        getFriends();
     }
+
+    $('#registerForm')
+    .ajaxForm({
+        url: 'http://softuni-social-network.azurewebsites.net/api/users/Register',
+        dataType: 'json',
+        //method: 'post',
+        success: function (data) {
+            //console.log(new Date(data.expires_in));
+            document.cookie = "access_token=" + data.access_token;
+            //console.log(document.cookie);
+            $scope.isLogedIn = true;
+            initProfile();
+            $scope.$apply();
+        }
+    });
 
     $scope.tryLogin = function() {
         var username = $("#login-username").val();
@@ -93,6 +113,10 @@ socialNetwork.controller("SocialNetworkController", function($scope) {
                 //console.log(data);
                 $scope.fullName = data.name;
                 document.cookie = "nickname=" + data.username;
+                $scope.email = data.email;
+                $scope.gender = data.gender;
+                $scope.nameForEdit = data.name;
+                $scope.emailForEdit = data.email;
                 $scope.$apply();
             }
         });
@@ -111,15 +135,20 @@ socialNetwork.controller("SocialNetworkController", function($scope) {
         });
     }
 
-    function createNewPost() {
+    $scope.createNewPost = function(content) {
         //console.log(getCookie("nickname"));
         $.ajax({
             url: backEndURL + "/Posts",
             type: "POST",
-            data: { PostContent: "WAAZAAA", Username: getCookie("nickname") },
+            data: { PostContent: content, Username: getCookie("nickname") },
             beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
             success: function (data) {
                 console.log(data);
+                alert("Post created!");
+                window.location.href = "/#/";
+            },
+            error: function () {
+                alert("Invalid data!");
             }
         });
     }
@@ -132,5 +161,96 @@ socialNetwork.controller("SocialNetworkController", function($scope) {
             return "Female";
         }
         return "Other";
+    }
+
+    $scope.friendRequest = function (username) {
+        $.ajax({
+            url: backEndURL + "/me/requests/" + username,
+            type: "POST",
+            data: { username: username },
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function getFriendRequests() {
+        $.ajax({
+            url: backEndURL + "/me/requests",
+            type: "GET",
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+                $scope.friendRequests = data;
+                $scope.$apply();
+            }
+        });
+    }
+
+    $scope.resolveFriendRequest = function (id, status) {
+        $.ajax({
+            url: backEndURL + "/me/requests/" + id +"?status=" + status,
+            type: "PUT",
+            data: { requestId: id, status: status },
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    $scope.updateProfile = function () {
+        $.ajax({
+            url: backEndURL + "/me/",
+            type: "PUT",
+            data: { Name: $scope.nameForEdit, Email: $scope.emailForEdit },
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    $scope.changePassword = function (oldPassword, newPassword, confirmPassword) {
+        $.ajax({
+            url: backEndURL + "/me/ChangePassword",
+            type: "PUT",
+            data: { OldPassword: oldPassword, NewPassword: newPassword, ConfirmPassword: confirmPassword },
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+                alert(data.message);
+            },
+            error: function (data) {
+                alert("Invalid data!");
+            }
+        });
+    }
+
+    $scope.likePost = function(id, type){
+        $.ajax({
+            url: backEndURL + "/Posts/" + id + "/likes",
+            type: type,
+            data: { id: id },
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+                getNewsFeed();
+            }
+        });
+    }
+
+    function getFriends() {
+        $.ajax({
+            url: backEndURL + "/me/friends",
+            type: "GET",
+            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + getCookie("access_token")); },
+            success: function (data) {
+                console.log(data);
+                $scope.friends = data;
+                $scope.$apply();
+            }
+        });
     }
 });

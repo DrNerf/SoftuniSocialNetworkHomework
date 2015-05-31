@@ -1,0 +1,27 @@
+﻿<h1>Edit Profile</h1>
+<div class="container" id="edit-row">
+    <div class="row borderless">
+        <div class="col-lg-4">
+            gadagd
+        </div>
+        <div class="col-lg-7 pull-right" id="edit-profile-info">
+            <label>Name:</label>
+            <input type="text" placeholder="Name" ng-model="nameForEdit" />
+            <br />
+            <br />
+            <label>Email:</label>
+            <input type="email" placeholder="Email" ng-model="emailForEdit" />
+            <br />
+            <br />
+            <label>Gender:</label>
+            <span id="gender-radios">
+                <input type="radio" name="Gender" value="1" ng-checked="gender == 1">Male
+                <input type="radio" name="Gender" value="2" ng-checked="gender == 2">Female
+                <input type="radio" name="Gender" value="0" ng-checked="gender == 0">Other
+            </span>
+        </div>
+    </div>
+    <div class="row borderless">
+        <input type="button" value="Save Changes" class="btn-lg pull-right" id="save-edit-changes" ng-click="updateProfile()" />
+    </div>
+</div>

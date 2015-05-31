@@ -4,6 +4,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="Styles/LoginAndRegister.css">
     <link href="Styles/Profile.css" rel="stylesheet" />
+    <link href="Styles/General.css" rel="stylesheet" />
+    <link href="Styles/IconDropDowns.css" rel="stylesheet" />
+    <link href="Styles/EditPage.css" rel="stylesheet" />
+    <link href="Styles/ChangePassword.css" rel="stylesheet" />
+    <link href="Styles/CreatePost.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -12,10 +17,23 @@
                 <h3>
                     <div class="col-lg-6">
                         <a href="/#/">{{fullName}}</a>
-                        <i class="glyphicon glyphicon-comment"></i>
-                        <i class="glyphicon glyphicon-user"></i>
-                        <i class="glyphicon glyphicon-cog"></i>
-                        <i class="glyphicon glyphicon-lock"></i>
+                        <a href="/#/createPost"><i class="glyphicon glyphicon-comment"></i></a>
+                        <i class="glyphicon glyphicon-user" id="friend-requests-icon">
+                            <span class="notification-icon" ng-show="friendRequests.length > 0">{{friendRequests.length}}</span>
+                            <span class="icon-dropdown" id="friend-requests-dropdown">
+                                <span ng-repeat="request in friendRequests">
+                                    <strong>{{request.user.name}}</strong>
+                                    <div>
+                                        <input type="button" value="Accept" ng-click="resolveFriendRequest(request.id, 'approved')" />
+                                        <input type="button" value="Reject" ng-click="resolveFriendRequest(request.id, 'rejected')" />
+                                    </div>
+                                    <hr />
+                                </span>
+                                <strong class="totals-text">{{friendRequests.length}} results total</strong>
+                            </span>
+                        </i>
+                        <a href="#/editProfile/"><i class="glyphicon glyphicon-cog"></i></a>
+                        <a href="/#/changePassword"><i class="glyphicon glyphicon-lock"></i></a>
                         <i class="glyphicon glyphicon-log-out" ng-click="logout()"></i>
                     </div>
 
@@ -54,5 +72,6 @@
     <script src="Scripts/AngularController.js"></script>
     <script src="Scripts/AjaxForm.js"></script>
     <script src="Scripts/LoginForm.js"></script>
+    <script src="Scripts/IconDropDowns.js"></script>
 </body>
 </html>

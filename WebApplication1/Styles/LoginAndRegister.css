@@ -12,11 +12,7 @@
 }
 
 .form-container input[type=button], input[type=submit]{
-    margin-top:2.9%;
     min-width:50%;
-    background-color:#5b9bd5;
-    border:2px solid #41719c;
-    color:white;
 }
 
 #register-form label{

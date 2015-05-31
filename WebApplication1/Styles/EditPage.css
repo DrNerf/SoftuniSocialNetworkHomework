@@ -1,0 +1,20 @@
+﻿#edit-row, #edit-row div{
+    border:2px solid black;
+    padding:2.9%;
+}
+
+#edit-profile-info input[type=text], #edit-profile-info input[type=email]{
+    height:6%;
+    border:2px solid black;
+    margin-left:4%;
+    padding-left:2.9%;
+    width:60%;
+}
+
+#gender-radios{
+    margin-left:2.9%;
+}
+
+#save-edit-changes{
+    border-radius:0px !important;
+}

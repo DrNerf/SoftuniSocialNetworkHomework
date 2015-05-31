@@ -1,0 +1,84 @@
+﻿input[type=button], input[type=submit]{
+    margin-top:2.9%;
+    background-color:#5b9bd5;
+    border:2px solid #41719c;
+    color:white;
+}
+
+.notification-icon{
+    position:absolute;
+    z-index:999;
+    background-color:red;
+    border-radius:50px;
+    font-size:16px;
+    color:white;
+    width:50%;
+    height:50%;
+    text-align:center;
+    bottom:0px;
+    right:0px;
+}
+
+.totals-text{
+    display:block;
+    color:black;
+    text-decoration:underline;
+    font-size:16px;
+    text-align:center;
+}
+
+.form-spacer{
+    margin-bottom:2.9%;
+}
+
+.borderless{
+    border:0px !important;
+    margin:0px !important;
+    padding:0px !important;
+}
+
+.post{
+    border:2px solid black;
+    padding:2.9%;
+    margin-bottom:2.9%;
+}
+
+.like-btn{
+    cursor:pointer;
+}
+
+.like-btn:hover{
+    color:#337ab7;
+}
+
+.comment-btn{
+    cursor:pointer;
+}
+
+.comment-btn:hover{
+    color:#337ab7;
+}
+
+.dislike-btn{
+    cursor:pointer;
+}
+
+.dislike-btn:hover{
+    color:red;
+}
+
+#friends-container{
+    border:2px solid black;
+    padding:0px;
+}
+
+#friends-container h2{
+    border-bottom:2px solid black;
+    width:100%;
+    text-align:center;
+}
+
+#friends-container div{
+    margin-left:10%;
+    margin-right:10%;
+}

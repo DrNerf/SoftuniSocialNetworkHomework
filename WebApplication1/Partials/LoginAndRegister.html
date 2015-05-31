@@ -46,12 +46,33 @@
         <div class="row">
             <h1>News Feed <i class="glyphicon glyphicon-comment"></i></h1>
         </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <h1>NEWS FEEED!!</h1>
+        <div class="container">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="row post" ng-repeat="post in newsFeed">
+                        <div>
+                            <h4><strong>{{post.author.name}}</strong></h4>
+                        </div>
+                        <div>
+                            {{post.date}}
+                        </div>
+                        <div>
+                            <p>{{post.postContent}}</p>
+                        </div>
+                        <span class="pull-right">
+                            <span ng-show="!post.liked"><span class="like-btn" ng-click="likePost(post.id, 'POST')"><i class="glyphicon glyphicon-thumbs-up"></i> {{post.likesCount}}</span></span>
+                            <span ng-show="post.liked"><span class="dislike-btn" ng-click="likePost(post.id, 'DELETE')"><i class="glyphicon glyphicon-thumbs-up"></i> {{post.likesCount}}</span></span>
+                            <span class="comment-btn"><i class="glyphicon glyphicon-comment"></i> {{post.totalCommentsCount}}</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <h1>FRIENDS LIST</h1>
+            <div class="col-lg-4 pull-right" id="friends-container">
+                <h2>FRIENDS - {{friends.length}} total</h2>
+                <div ng-repeat="friend in friends">
+                    <h4><strong>{{friend.name}}</strong></h4>
+                    <hr />
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,15 @@
+﻿.icon-dropdown{
+    position:absolute;
+    border:2px solid black;
+    padding:15px;
+    background-color:white;
+    z-index:99999;
+    min-width:300px;
+    display:none;
+    top:40px;
+}
+
+.icon-dropdown:hover{
+    border:2px solid black;
+    color:black;
+}

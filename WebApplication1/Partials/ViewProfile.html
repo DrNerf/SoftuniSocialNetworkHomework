@@ -1,1 +1,7 @@
-﻿<h1>{{profileViewed.name}}({{profileViewed.username}}) Gender: {{parseGender(profileViewed.gender)}}</h1>
+﻿<h1>
+    <span>{{profileViewed.name}}
+        <input type="button" value="Friend" ng-click="friendRequest(profileViewed.username)" ng-show="!profileViewed.hasPendingRequest" /> 
+        <input type="button" disabled="disabled" value="Friend request sent!" ng-show="profileViewed.hasPendingRequest" /> 
+    </span>
+    <!--({{profileViewed.username}}) Gender: {{parseGender(profileViewed.gender)}}-->
+</h1>
